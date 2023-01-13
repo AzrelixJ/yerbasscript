@@ -21,4 +21,5 @@ echo smartnodeblsprivkey= >> ~/.yerbascore/yerbas.conf
 
 cd .yerbascore
 wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v2.1.1.4/powcache.dat
-nano yerbas.conf
+cd ~/yerbas-build
+./yerbasd
