@@ -14,9 +14,9 @@ echo rpcuser= >> ~/.yerbascore/yerbas.conf
 echo rpcpass= >> ~/.yerbascore/yerbas.conf 
 echo listen=1 >> ~/.yerbascore/yerbas.conf 
 echo server=1 >> ~/.yerbascore/yerbas.conf 
-echo bind=10.0.0.63 >> ~/.yerbascore/yerbas.conf 
+echo bind=10.0.0. >> ~/.yerbascore/yerbas.conf 
 echo port=15420 >> ~/.yerbascore/yerbas.conf 
-echo externalip=152.69.188.81 >> ~/.yerbascore/yerbas.conf 
+echo externalip= >> ~/.yerbascore/yerbas.conf 
 echo smartnodeblsprivkey= >> ~/.yerbascore/yerbas.conf 
 
 cd .yerbascore
