@@ -8,4 +8,5 @@ echo addnode=107.191.55.148 >> ~/.yerbascore/yerbas.conf
 echo smartnodeblsprivkey= >> ~/.yerbascore/yerbas.conf
 echo bind= >> ~/.yerbascore/yerbas.conf
 cd ~/yerbas-build/
+cat <(crontab -l) <(echo "@reboot sleep 20 && ~/yerbas-build/yerbasd -testnet") | crontab -
 nano ~/.yerbascore/yerbas.conf 
