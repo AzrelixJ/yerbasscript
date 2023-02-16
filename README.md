@@ -6,5 +6,5 @@ wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/install.sh && 
 
 TESTNET
 ```
-wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/testinstall.sh && chmod +x install.sh && ./install.sh
+wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/testinstall.sh && chmod +x testinstall.sh && ./testinstall.sh
 ```
