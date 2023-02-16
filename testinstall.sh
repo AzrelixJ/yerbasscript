@@ -7,5 +7,5 @@ echo daemon=1 >> ~/.yerbascore/yerbas.conf
 echo addnode=107.191.55.148 >> ~/.yerbascore/yerbas.conf
 echo smartnodeblsprivkey= >> ~/.yerbascore/yerbas.conf
 echo bind= >> ~/.yerbascore/yerbas.conf
-cd ~/.yerbcore/
-nano yerbas.conf 
+cd ~/yerbas-build/
+nano ~/.yerbascore/yerbas.conf 
