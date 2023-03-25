@@ -8,3 +8,8 @@ TESTNET
 ```
 wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/testinstall.sh && chmod +x testinstall.sh && ./testinstall.sh
 ```
+
+Yerb Update
+```
+wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/yerbupdate.sh && chmod +x yerbupdate.sh && ./yerbupdate.sh
+```
