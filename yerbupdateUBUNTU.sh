@@ -7,3 +7,4 @@ tar -xf yerbas-ubuntu20-v3.1.2.6.tar.gz
 rm yerbas-ubuntu20-v3.1.2.6.tar.gz
 cd yerbas-build
 ./yerbasd
+rm ~/yerbupdateUBUNTU.sh
