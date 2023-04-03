@@ -1,3 +1,10 @@
+UPDATE SCRIPT
+```
+wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/updatescript.sh && chmod +x updatescript.sh && ./updatescript.sh
+```
+
+
+
 MAINNET
 ```
 wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/install.sh && chmod +x install.sh && ./install.sh
