@@ -11,5 +11,5 @@ wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/testinstall.sh
 
 Yerb Update
 ```
-wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/yerbupdate1.sh && chmod +x yerbupdate.sh && ./yerbupdate.sh
+wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/yerbupdate1.sh && chmod +x yerbupdate1.sh && ./yerbupdate1.sh
 ```
