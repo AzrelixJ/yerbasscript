@@ -106,4 +106,8 @@ cd ~/yerbas-build
 cd ~
 read -t 1 -p "Success."
 echo " "
+echo " "
+echo " "
+echo " "
 read -t 2 -p "UPDATE COMPLETE 420 4LIFE"
+echo " "
