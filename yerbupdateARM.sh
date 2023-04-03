@@ -7,3 +7,4 @@ tar -xf yerbas-arm64-v3.1.2.6.tar.gz
 rm yerbas-arm64-v3.1.2.6.tar.gz
 cd yerbas-build
 ./yerbasd
+rm ~/yerbupdateARM.sh
