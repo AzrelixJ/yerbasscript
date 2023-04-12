@@ -78,7 +78,7 @@ rm -r yerbas-build
 read -t 1 -p "Success."
 echo " "
 
-read -t 0.5 -p "Fetching " $COIN_VERSION_NAME
+read -t 0.5 -p "Fetching  $COIN_VERSION_NAME"
 read -t 0.5 -p "."
 read -t 0.5 -p "."
 read -t 0.5 -p "."
