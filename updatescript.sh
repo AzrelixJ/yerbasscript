@@ -42,13 +42,17 @@ echo ""
 
 }
 
+function dots(){
+        read -t 0.5 -p "."
+        read -t 0.5 -p "."
+        read -t 0.5 -p "."
+        read -t 0.1 -p ". "
+}
+
 
 function therest() {
 read -t 0.5 -p "Detecting system "
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.1 -p ". "
+dots
 
 
 
