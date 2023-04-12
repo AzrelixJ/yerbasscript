@@ -15,8 +15,8 @@ CN='\033[0m'
 RED='\033[0;31m'
 
 
-clear
 
+function yerbas_title() {
 echo -e "${YG}YYYYYYY       YYYYYYYEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   BBBBBBBBBBBBBBBBB               AAA                 SSSSSSSSSSSSSSS   "
 echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::::::::::::R  B::::::::::::::::B             A:::A              SS:::::::::::::::S  "
 echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::RRRRRR:::::R B::::::BBBBBB:::::B           A:::::A            S:::::SSSSSS::::::S  "
@@ -39,6 +39,11 @@ echo ""
 echo ""
 echo "YERBAS install script .... created and maintained by Azrelix"
 echo ""
+
+}
+
+
+function therest() {
 read -t 0.5 -p "Detecting system "
 read -t 0.5 -p "."
 read -t 0.5 -p "."
@@ -64,11 +69,12 @@ read -t 0.5 -p "Stopping Yerbas Damon "
 read -t 0.5 -p "."
 read -t 0.5 -p "."
 read -t 0.5 -p "."
-read -t 0.1 -p ". "
+read -t 0.1 -p "."
 cd ~/yerbas-build
 ./$COIN_CLI stop
 cd ~
-read -t 1 -p "Success."
+read -t 1 -p " "
+echo -e "${YG}Success.${CN}"
 echo " "
 
 read -t 0.5 -p "Removing YerbasBuild folder "
@@ -137,3 +143,12 @@ echo " "
 echo " "
 read -t 2 -p "UPDATE COMPLETE ... 420 4LIFE"
 echo " "
+
+}
+
+#MAIN
+
+clear
+yerbas_title
+
+therest
