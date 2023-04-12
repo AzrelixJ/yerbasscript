@@ -11,6 +11,7 @@ COIN_URL_BOOT='bootstrap.zip'
 COIN_VERSION_NAME='v3.1.2.6 -- Salata Furca Deux'
 NODE_IP=""
 YERBAS_GREEN="\033[0;32m"
+COLOUR_NORMAL'\033[0m'
 
 
 clear
@@ -30,7 +31,7 @@ echo "       Y:::::Y         E:::::E       EEEEEE  R::::R     R:::::R  B::::B   
 echo "       Y:::::Y       EE::::::EEEEEEEE:::::ERR:::::R     R:::::RBB:::::BBBBBB::::::BA:::::A             A:::::A  SSSSSSS     S:::::S  "
 echo "    YYYY:::::YYYY    E::::::::::::::::::::ER::::::R     R:::::RB:::::::::::::::::BA:::::A               A:::::A S::::::SSSSSS:::::S  "
 echo "    Y:::::::::::Y    E::::::::::::::::::::ER::::::R     R:::::RB::::::::::::::::BA:::::A                 A:::::AS:::::::::::::::SS   "
-echo "    YYYYYYYYYYYYY    EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS     "
+echo "    YYYYYYYYYYYYY    EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS     ${COLOUR_NORMAL}"
 
 
 echo ""
