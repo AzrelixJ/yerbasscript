@@ -146,10 +146,16 @@ function download_node() {
 }
 
 function power_cache() {
-
-
-
-        
+        echo "Download Power Cache?"
+        echo "  1) Yes"
+        echo "  2) No"
+        read n
+        case $n in
+        1) PC=1;;
+        2) PC=2;;
+        *) echo -e "${RED}invalid option selected.. :( try again${CN}"  ;power_cache;
+        esac
+        echo " "
 }
 
 
@@ -184,5 +190,9 @@ yerbas_title
 install_type
 uninstall_old
 download_node
+power_cache
+
+
+
 
 #therest
