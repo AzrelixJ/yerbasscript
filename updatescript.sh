@@ -9,14 +9,14 @@ COIN_URL_UBUNTU='yerbas-ubuntu20-v3.1.2.6.tar.gz'
 COIN_URL_POWER='powcache.dat'
 COIN_URL_BOOT='bootstrap.zip'
 COIN_VERSION_NAME='v3.1.2.6 -- Salata Furca Deux'
-NODE_IP=""
-YERBAS_GREEN="\033[0;32m"
-COLOUR_NORMAL'\033[0m'
+NODE_IP=''
+YG='\033[0;32m'
+CN='\033[0m'
 
 
 clear
 
-echo "${YERBAS_GREEN}YYYYYYY       YYYYYYYEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   BBBBBBBBBBBBBBBBB               AAA                 SSSSSSSSSSSSSSS   "
+echo -e "${YG}YYYYYYY       YYYYYYYEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   BBBBBBBBBBBBBBBBB               AAA                 SSSSSSSSSSSSSSS   "
 echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::::::::::::R  B::::::::::::::::B             A:::A              SS:::::::::::::::S  "
 echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::RRRRRR:::::R B::::::BBBBBB:::::B           A:::::A            S:::::SSSSSS::::::S  "
 echo "Y::::::Y     Y::::::YEE::::::EEEEEEEEE::::ERR:::::R     R:::::RBB:::::B     B:::::B         A:::::::A           S:::::S     SSSSSSS  "
@@ -31,7 +31,7 @@ echo "       Y:::::Y         E:::::E       EEEEEE  R::::R     R:::::R  B::::B   
 echo "       Y:::::Y       EE::::::EEEEEEEE:::::ERR:::::R     R:::::RBB:::::BBBBBB::::::BA:::::A             A:::::A  SSSSSSS     S:::::S  "
 echo "    YYYY:::::YYYY    E::::::::::::::::::::ER::::::R     R:::::RB:::::::::::::::::BA:::::A               A:::::A S::::::SSSSSS:::::S  "
 echo "    Y:::::::::::Y    E::::::::::::::::::::ER::::::R     R:::::RB::::::::::::::::BA:::::A                 A:::::AS:::::::::::::::SS   "
-echo "    YYYYYYYYYYYYY    EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS     ${COLOUR_NORMAL}"
+echo -e "    YYYYYYYYYYYYY    EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS     ${CN}"
 
 
 echo ""
@@ -51,7 +51,7 @@ if [ $osType == "x86_64" ]
         echo "$osType system detected."
 elif [ $osType == "aarch64" ]
         then
-        echo "$osType system detected."
+        echo -e "${YG}$osType system detected.${CN}"
 else
         echo "ERROR ERROR ERROR...."
         echo ""
