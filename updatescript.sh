@@ -19,28 +19,28 @@ RED='\033[0;31m'
 
 
 function yerbas_title() {
-echo -e "${YG}YYYYYYY       YYYYYYYEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   BBBBBBBBBBBBBBBBB               AAA                 SSSSSSSSSSSSSSS   "
-echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::::::::::::R  B::::::::::::::::B             A:::A              SS:::::::::::::::S  "
-echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::RRRRRR:::::R B::::::BBBBBB:::::B           A:::::A            S:::::SSSSSS::::::S  "
-echo "Y::::::Y     Y::::::YEE::::::EEEEEEEEE::::ERR:::::R     R:::::RBB:::::B     B:::::B         A:::::::A           S:::::S     SSSSSSS  "
-echo "YYY:::::Y   Y:::::YYY  E:::::E       EEEEEE  R::::R     R:::::R  B::::B     B:::::B        A:::::::::A          S:::::S              "
-echo "   Y:::::Y Y:::::Y     E:::::E               R::::R     R:::::R  B::::B     B:::::B       A:::::A:::::A         S:::::S              "
-echo "    Y:::::Y:::::Y      E::::::EEEEEEEEEE     R::::RRRRRR:::::R   B::::BBBBBB:::::B       A:::::A A:::::A         S::::SSSS           "
-echo "     Y:::::::::Y       E:::::::::::::::E     R:::::::::::::RR    B:::::::::::::BB       A:::::A   A:::::A         SS::::::SSSSS      "
-echo "      Y:::::::Y        E:::::::::::::::E     R::::RRRRRR:::::R   B::::BBBBBB:::::B     A:::::A     A:::::A          SSS::::::::SS    "
-echo "       Y:::::Y         E::::::EEEEEEEEEE     R::::R     R:::::R  B::::B     B:::::B   A:::::AAAAAAAAA:::::A            SSSSSS::::S   "
-echo "       Y:::::Y         E:::::E               R::::R     R:::::R  B::::B     B:::::B  A:::::::::::::::::::::A                S:::::S  "
-echo "       Y:::::Y         E:::::E       EEEEEE  R::::R     R:::::R  B::::B     B:::::B A:::::AAAAAAAAAAAAA:::::A               S:::::S  "
-echo "       Y:::::Y       EE::::::EEEEEEEE:::::ERR:::::R     R:::::RBB:::::BBBBBB::::::BA:::::A             A:::::A  SSSSSSS     S:::::S  "
-echo "    YYYY:::::YYYY    E::::::::::::::::::::ER::::::R     R:::::RB:::::::::::::::::BA:::::A               A:::::A S::::::SSSSSS:::::S  "
-echo "    Y:::::::::::Y    E::::::::::::::::::::ER::::::R     R:::::RB::::::::::::::::BA:::::A                 A:::::AS:::::::::::::::SS   "
-echo -e "    YYYYYYYYYYYYY    EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS     ${CN}"
+        echo -e "${YG}YYYYYYY       YYYYYYYEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   BBBBBBBBBBBBBBBBB               AAA                 SSSSSSSSSSSSSSS   "
+        echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::::::::::::R  B::::::::::::::::B             A:::A              SS:::::::::::::::S  "
+        echo "Y:::::Y       Y:::::YE::::::::::::::::::::ER::::::RRRRRR:::::R B::::::BBBBBB:::::B           A:::::A            S:::::SSSSSS::::::S  "
+        echo "Y::::::Y     Y::::::YEE::::::EEEEEEEEE::::ERR:::::R     R:::::RBB:::::B     B:::::B         A:::::::A           S:::::S     SSSSSSS  "
+        echo "YYY:::::Y   Y:::::YYY  E:::::E       EEEEEE  R::::R     R:::::R  B::::B     B:::::B        A:::::::::A          S:::::S              "
+        echo "   Y:::::Y Y:::::Y     E:::::E               R::::R     R:::::R  B::::B     B:::::B       A:::::A:::::A         S:::::S              "
+        echo "    Y:::::Y:::::Y      E::::::EEEEEEEEEE     R::::RRRRRR:::::R   B::::BBBBBB:::::B       A:::::A A:::::A         S::::SSSS           "
+        echo "     Y:::::::::Y       E:::::::::::::::E     R:::::::::::::RR    B:::::::::::::BB       A:::::A   A:::::A         SS::::::SSSSS      "
+        echo "      Y:::::::Y        E:::::::::::::::E     R::::RRRRRR:::::R   B::::BBBBBB:::::B     A:::::A     A:::::A          SSS::::::::SS    "
+        echo "       Y:::::Y         E::::::EEEEEEEEEE     R::::R     R:::::R  B::::B     B:::::B   A:::::AAAAAAAAA:::::A            SSSSSS::::S   "
+        echo "       Y:::::Y         E:::::E               R::::R     R:::::R  B::::B     B:::::B  A:::::::::::::::::::::A                S:::::S  "
+        echo "       Y:::::Y         E:::::E       EEEEEE  R::::R     R:::::R  B::::B     B:::::B A:::::AAAAAAAAAAAAA:::::A               S:::::S  "
+        echo "       Y:::::Y       EE::::::EEEEEEEE:::::ERR:::::R     R:::::RBB:::::BBBBBB::::::BA:::::A             A:::::A  SSSSSSS     S:::::S  "
+        echo "    YYYY:::::YYYY    E::::::::::::::::::::ER::::::R     R:::::RB:::::::::::::::::BA:::::A               A:::::A S::::::SSSSSS:::::S  "
+        echo "    Y:::::::::::Y    E::::::::::::::::::::ER::::::R     R:::::RB::::::::::::::::BA:::::A                 A:::::AS:::::::::::::::SS   "
+        echo -e "    YYYYYYYYYYYYY    EEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRBBBBBBBBBBBBBBBBBAAAAAAA                   AAAAAAASSSSSSSSSSSSSSS     ${CN}"
 
 
-echo ""
-echo ""
-echo "YERBAS install script .... created and maintained by Azrelix"
-echo ""
+        echo ""
+        echo ""
+        echo "YERBAS install script .... created and maintained by Azrelix"
+        echo ""
 
 }
 
@@ -53,114 +53,129 @@ function dots(){
 
 
 function install_type(){
-echo "Select option"
-echo "  1) Install new $COIN_NAME node"
-echo "  2) Update existing $COIN_NAME node"
+        echo "Select option"
+        echo "  1) Install new $COIN_NAME node"
+        echo "  2) Update existing $COIN_NAME node"
 
 
-read n
-case $n in
-  1) INS_TYPE='new';;
-  2) INS_TYPE='update';;
-  *) echo "invalid option selected.. :( try again"  ;install_type;
-esac
+        read n
+        case $n in
+        1) INS_TYPE='new';;
+        2) INS_TYPE='update';;
+        *) echo "invalid option selected.. :( try again"  ;install_type;
+        esac
 
 
 }
 
 
 function therest() {
-read -t 0.5 -p "Detecting system "
-dots
+        read -t 0.5 -p "Detecting system "
+        dots
 
 
 
-if [ $osType == "x86_64" ]
-        then
-        echo -e "${YG}$osType system detected.${CN}"
-elif [ $osType == "aarch64" ]
-        then
-        echo -e "${YG}$osType system detected.${CN}"
-else
-        echo -e "${RED}ERROR ERROR ERROR...."
-        echo ""
-        echo -e "SCRIPT FAILED... NO MATCHING OS FOUND found${CN}"
-        end
-fi
+        if [ $osType == "x86_64" ]
+                then
+                echo -e "${YG}$osType system detected.${CN}"
+        elif [ $osType == "aarch64" ]
+                then
+                echo -e "${YG}$osType system detected.${CN}"
+        else
+                echo -e "${RED}ERROR ERROR ERROR...."
+                echo ""
+                echo -e "SCRIPT FAILED... NO MATCHING OS FOUND found${CN}"
+                end
+        fi
+}
 
-read -t 0.5 -p "Stopping Yerbas Damon "
-dots
+function uninstall_old() {
 
-cd ~/yerbas-build
-./$COIN_CLI stop
-cd ~
-read -t 1 -p " "
-echo -e "${YG}Success.${CN}"
-echo " "
+        read -t 0.5 -p "Stopping Yerbas Damon "
+        dots
 
-read -t 0.5 -p "Removing YerbasBuild folder "
-dots
+        cd ~/yerbas-build
+        ./$COIN_CLI stop
+        cd ~
+        read -t 1 -p " "
+        echo -e "${YG}Success.${CN}"
+        echo " "
 
-rm -r yerbas-build
-read -t 1 -p "Success."
-echo " "
+        read -t 0.5 -p "Removing YerbasBuild folder "
+        dots
 
-read -t 0.5 -p "Fetching  $COIN_VERSION_NAME"
-dots
+        rm -r yerbas-build
+        read -t 1 -p "Success."
+        echo " "
 
-if [ $osType == "x86_64" ]
-        then
-        wget -q $COIN_URL$COIN_URL_UBUNTU
-elif [ $osType == "aarch64" ]
-        then
-        wget -q $COIN_URL$COIN_URL_ARM
-fi
-read -t 1 -p "Success."
-echo " "
+}
 
-read -t 0.5 -p "Extracting files "
-dots
+function download_node() {
+        read -t 0.5 -p "Fetching  $COIN_VERSION_NAME"
+        dots
 
-if [ $osType == "x86_64" ]
-        then
-        tar -xf $COIN_URL_UBUNTU
-        rm $COIN_URL_UBUNTU
-elif [ $osType == "aarch64" ]
-        then
-        tar -xf $COIN_URL_ARM
-        rm $COIN_URL_ARM
-fi
-read -t 1 -p "Success."
-echo " "
+        if [ $osType == "x86_64" ]
+                then
+                wget -q $COIN_URL$COIN_URL_UBUNTU
+        elif [ $osType == "aarch64" ]
+                then
+                wget -q $COIN_URL$COIN_URL_ARM
+        fi
+        read -t 1 -p "Success."
+        echo " "
 
-sudo apt-get install -qq unzip
+        read -t 0.5 -p "Extracting files "
+        dots
 
-cd ~/.yerbascore
-wget -q $COIN_URL$COIN_URL_POWER
-wget -q $COIN_URL$COIN_URL_BOOT
-unzip $COIN_URL_BOOT
-mv bootstrap/*
-rm -r bootstrap
-rm $COIN_URL_BOOT
+        if [ $osType == "x86_64" ]
+                then
+                tar -xf $COIN_URL_UBUNTU
+                rm $COIN_URL_UBUNTU
+        elif [ $osType == "aarch64" ]
+                then
+                tar -xf $COIN_URL_ARM
+                rm $COIN_URL_ARM
+        fi
+        read -t 1 -p "Success."
+        echo " "
 
-read -t 0.5 -p "Restarting Yerbas Daemon "
-dots
+}
 
-cd ~/yerbas-build
-./COIN_DAEMON
-cd ~
-read -t 1 -p "Success."
-dots
+function other() {
 
-read -t 2 -p "UPDATE COMPLETE ... 420 4LIFE"
-echo " "
+        sudo apt-get install -qq unzip
+
+        cd ~/.yerbascore
+        wget -q $COIN_URL$COIN_URL_POWER
+        wget -q $COIN_URL$COIN_URL_BOOT
+        unzip $COIN_URL_BOOT
+        mv bootstrap/*
+        rm -r bootstrap
+        rm $COIN_URL_BOOT
+        }
+
+        function restart_daemon() {
+        read -t 0.5 -p "Restarting Yerbas Daemon "
+        dots
+
+        cd ~/yerbas-build
+        ./COIN_DAEMON
+        cd ~
+        read -t 1 -p "Success."
+        dots
+
+        read -t 2 -p "UPDATE COMPLETE ... 420 4LIFE"
+        echo " "
 
 }
 
 #MAIN
 
 clear
-install_type
 
-#yerbas_title
+yerbas_title
+install_type
+uninstall_old
+download_node
+
 #therest
