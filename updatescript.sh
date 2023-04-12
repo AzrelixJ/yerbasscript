@@ -52,16 +52,16 @@ function dots(){
 
 
 function install_type(){
-echo "select option"
-echo "  1) Install new node"
-echo "  2) Update existing node"
+echo "Select option"
+echo "  1) Install new $COIN_NAME node"
+echo "  2) Update existing $COIN_NAME node"
 
 
 read n
 case $n in
-  1) echo "You chose Option 1";;
-  2) echo "You chose Option 2";;
-  *) echo "invalid option";;
+  1) echo "Installing new $COIN_NAME node";;
+  2) echo "Updationg your existing $COIN_NAME node";;
+  *) echo "invalid option selected.. :( try again)" install_type ;;
 esac
 
 
