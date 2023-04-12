@@ -12,6 +12,7 @@ COIN_VERSION_NAME='v3.1.2.6 -- Salata Furca Deux'
 NODE_IP=''
 YG='\033[0;32m'
 CN='\033[0m'
+RED='\033[0;31m'
 
 
 clear
@@ -48,14 +49,14 @@ read -t 0.1 -p ". "
 
 if [ $osType == "x86_64" ]
         then
-        echo "$osType system detected."
+        echo -e "${YG}$osType system detected.${CN}"
 elif [ $osType == "aarch64" ]
         then
         echo -e "${YG}$osType system detected.${CN}"
 else
-        echo "ERROR ERROR ERROR...."
+        echo -e "${RED}ERROR ERROR ERROR...."
         echo ""
-        echo "Script ending, no matching OS found"
+        echo -e "Script ending, no matching OS found${CN}"
         end
 fi
 
