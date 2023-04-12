@@ -10,6 +10,7 @@ COIN_URL_POWER='powcache.dat'
 COIN_URL_BOOT='bootstrap.zip'
 COIN_VERSION_NAME='v3.1.2.6 -- Salata Furca Deux'
 NODE_IP=''
+INS_TYPE=''
 
 YG='\033[0;32m'
 CN='\033[0m'
@@ -59,9 +60,9 @@ echo "  2) Update existing $COIN_NAME node"
 
 read n
 case $n in
-  1) echo "Installing new $COIN_NAME node";;
-  2) echo "Updationg your existing $COIN_NAME node";;
-  *) echo "invalid option selected.. :( try again)" install_type ;;
+  1) INS_TYPE='new';;
+  2) INS_TYPE='update';;
+  *) echo "invalid option selected.. :( try again"  ;install_type;
 esac
 
 
