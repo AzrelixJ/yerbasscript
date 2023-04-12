@@ -10,6 +10,7 @@ COIN_URL_POWER='powcache.dat'
 COIN_URL_BOOT='bootstrap.zip'
 COIN_VERSION_NAME='v3.1.2.6 -- Salata Furca Deux'
 NODE_IP=''
+
 YG='\033[0;32m'
 CN='\033[0m'
 RED='\033[0;31m'
@@ -50,6 +51,23 @@ function dots(){
 }
 
 
+function install_type(){
+echo "select option"
+echo "  1) Install new node"
+echo "  2) Update existing node"
+
+
+read n
+case $n in
+  1) echo "You chose Option 1";;
+  2) echo "You chose Option 2";;
+  *) echo "invalid option";;
+esac
+
+
+}
+
+
 function therest() {
 read -t 0.5 -p "Detecting system "
 dots
@@ -65,15 +83,13 @@ elif [ $osType == "aarch64" ]
 else
         echo -e "${RED}ERROR ERROR ERROR...."
         echo ""
-        echo -e "Script ending, no matching OS found${CN}"
+        echo -e "SCRIPT FAILED... NO MATCHING OS FOUND found${CN}"
         end
 fi
 
 read -t 0.5 -p "Stopping Yerbas Damon "
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.1 -p "."
+dots
+
 cd ~/yerbas-build
 ./$COIN_CLI stop
 cd ~
@@ -82,19 +98,15 @@ echo -e "${YG}Success.${CN}"
 echo " "
 
 read -t 0.5 -p "Removing YerbasBuild folder "
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.1 -p ". "
+dots
+
 rm -r yerbas-build
 read -t 1 -p "Success."
 echo " "
 
 read -t 0.5 -p "Fetching  $COIN_VERSION_NAME"
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.1 -p ". "
+dots
+
 if [ $osType == "x86_64" ]
         then
         wget -q $COIN_URL$COIN_URL_UBUNTU
@@ -106,10 +118,8 @@ read -t 1 -p "Success."
 echo " "
 
 read -t 0.5 -p "Extracting files "
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.1 -p ". "
+dots
+
 if [ $osType == "x86_64" ]
         then
         tar -xf $COIN_URL_UBUNTU
@@ -133,18 +143,14 @@ rm -r bootstrap
 rm $COIN_URL_BOOT
 
 read -t 0.5 -p "Restarting Yerbas Daemon "
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.5 -p "."
-read -t 0.1 -p ". "
+dots
+
 cd ~/yerbas-build
 ./COIN_DAEMON
 cd ~
 read -t 1 -p "Success."
-echo " "
-echo " "
-echo " "
-echo " "
+dots
+
 read -t 2 -p "UPDATE COMPLETE ... 420 4LIFE"
 echo " "
 
@@ -153,6 +159,7 @@ echo " "
 #MAIN
 
 clear
-yerbas_title
+install_type
 
-therest
+#yerbas_title
+#therest
