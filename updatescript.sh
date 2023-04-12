@@ -61,7 +61,7 @@ function dots(){
 function install_type(){
         echo -e "${YELLOW}Select option"
         echo "  1) Install new $COIN_NAME node"
-        echo "  2) Update existing $COIN_NAME node${CN}"
+        echo -e "  2) Update existing $COIN_NAME node${CN}"
         read n
         case $n in
         1) INS_TYPE='new';;
@@ -73,7 +73,7 @@ function install_type(){
 
 
 function therest() {
-        read -t 0.5 -p "Detecting system "
+        echo "Detecting system "
         dots
         if [ $osType == "x86_64" ]
                 then
@@ -92,7 +92,7 @@ function therest() {
 function uninstall_old() {
         if [ $INS_TYPE == "update" ]
                 then
-                read -t 0.5 -p "Stopping Yerbas Damon "
+                echo "Stopping Yerbas Damon "
                 dots
                 cd ~/yerbas-build &> ~/.err.log
                 if ! grep -q "No such file or directory" "$File"; then
@@ -104,7 +104,7 @@ function uninstall_old() {
                                 echo -e "${RED}Failed.  Daemon not running, attempting to continue.${CN}"
                         fi
                         echo " "
-                        read -t 0.5 -p "Removing YerbasBuild folder "
+                        echo "Removing YerbasBuild folder "
                         dots
                         rm -r yerbas-build &> ~/.err.log
                         if ! grep -q "cannot remove 'yerbas-build'" "$File"; then
@@ -121,7 +121,7 @@ function uninstall_old() {
 }
 
 function download_node() {
-        read -t 0.5 -p "Fetching  $COIN_NAME $COIN_VERSION_NAME"
+        echo "Fetching $COIN_NAME $COIN_VERSION_NAME"
         dots
 
         if [ $osType == "x86_64" ]
@@ -133,7 +133,7 @@ function download_node() {
         fi
         echo -e "${YG}Success.${CN}"
         echo " "
-        read -t 0.5 -p "Extracting files "
+        echo "Extracting $COIN_NAME $COIN_VERSION_NAME"
         dots
         if [ $osType == "x86_64" ]
                 then
@@ -146,6 +146,19 @@ function download_node() {
         fi
         echo -e "${YG}Success.${CN}"
         echo " "
+
+        if [ $PC == 1 ]
+                then
+                cd ~
+                mkdir .yerbascore
+                cd .yerbascore
+                echo "Fetching $COIN_NAME $COIN_URL_POWER"
+                dots
+                wget $COIN_URL$COIN_URL_POWER
+
+        else
+                echo "Skipping $COIN_URL_POWER"
+        fi
 
 }
 
@@ -175,14 +188,14 @@ function other() {
         rm $COIN_URL_BOOT
         }
         function restart_daemon() {
-        read -t 0.5 -p "Restarting Yerbas Daemon "
+        echo "Restarting Yerbas Daemon "
         dots
         cd ~/yerbas-build
         ./COIN_DAEMON
         cd ~
         echo -e "${YG}Success.${CN}"
         dots
-        read -t 2 -p "${YG}UPDATE COMPLETE ... 420 4 LIFE${CN}"
+        echo "${YG}UPDATE COMPLETE ... 420 4 LIFE${CN}"
         echo " "
 }
 
@@ -193,9 +206,8 @@ clear
 yerbas_title
 install_type
 uninstall_old
-download_node
 power_cache
-
+download_node
 
 
 
