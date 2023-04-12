@@ -1,6 +1,6 @@
 UPDATE SCRIPT
 ```
-wget https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/updatescript.sh && chmod +x updatescript.sh && ./updatescript.sh
+wget -q https://raw.githubusercontent.com/AzrelixJ/yerbasscript/main/updatescript.sh && bash updatescript.sh
 ```
 
 
