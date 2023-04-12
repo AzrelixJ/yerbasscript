@@ -16,6 +16,10 @@ File=".err.log"
 YG='\033[0;32m'
 CN='\033[0m'
 RED='\033[0;31m'
+BLUE="\033[0;34m"
+YELLOW="\033[0;33m"
+CYAN="\033[0;36m" 
+PURPLE="\033[0;35m"
 
 
 
@@ -55,9 +59,9 @@ function dots(){
 
 
 function install_type(){
-        echo "Select option"
+        echo -e "${YELLOW}Select option"
         echo "  1) Install new $COIN_NAME node"
-        echo "  2) Update existing $COIN_NAME node"
+        echo "  2) Update existing $COIN_NAME node${CN}"
         read n
         case $n in
         1) INS_TYPE='new';;
@@ -146,9 +150,9 @@ function download_node() {
 }
 
 function power_cache() {
-        echo "Download Power Cache?"
+        echo -e "${YELLOW}Download Power Cache?"
         echo "  1) Yes"
-        echo "  2) No"
+        echo -e "  2) No${CN}"
         read n
         case $n in
         1) PC=1;;
