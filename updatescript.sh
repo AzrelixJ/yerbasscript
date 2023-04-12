@@ -96,6 +96,9 @@ fi
 read -t 1 -p "Success."
 echo " "
 
+cd ~/.yerbascore
+wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.2.6/powcache.dat
+
 read -t 0.5 -p "Restarting Yerbas Daemon "
 read -t 0.5 -p "."
 read -t 0.5 -p "."
