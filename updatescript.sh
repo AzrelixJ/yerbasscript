@@ -97,8 +97,12 @@ read -t 1 -p "Success."
 echo " "
 
 cd ~/.yerbascore
-wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.2.6/powcache.dat
-
+wget -q https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.2.6/powcache.dat
+wget -q https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.2.6/bootstrap.zip
+unzip bootstrap.zip
+mv bootstrap/*
+rm -r bootstrap
+rm bootstrap.zip
 
 read -t 0.5 -p "Restarting Yerbas Daemon "
 read -t 0.5 -p "."
