@@ -261,7 +261,7 @@ function 4204life() {
 
 function start_daemon () {
         tx_reindex
-        if [ TX == 1 ]
+        if [ $TX == 1 ]
         then
                 echo -n "     Starting $COIN_NAME daemon with txindex enabled"
                 dots
@@ -283,26 +283,31 @@ function start_daemon () {
 
 function node_settings () {
         echo " "
+        echo -e "${CYAN}     (Press enter to skip)"
         read -p "     Enter node IP: " NODE_IP
         read -p "     Enter BLS secret Key: " BLS_SECRET
-        echo " "
+        echo -e "${CN} "
 }
 
 function update_config () {
         echo -n "     Updating $COIN_NAME config file"
         dots
-        cat << EOF > ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-addnode=24.51.177.113:15420
-addnode=65.20.114.24:15420
-rpcallowip=127.0.0.1
-listen=1
-server=1
-daemon=1
-port=$COIN_PORT
-bind=$NODE_IP
-smartnodeblsprivkey=$BLS_SECRET
-EOF
-echo -e "${YG}Success.${CN}"
+        echo addnode=24.51.177.113:15420 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        echo addnode=65.20.114.24:15420 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        echo rpcallowip=127.0.0.1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        echo listen=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        echo server=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        echo daemon=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        echo port=$COIN_PORT >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        if [ $NODE_IP = "" ]
+        else
+                echo bind=$NODE_IP >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        fi
+        if [ $BLS_SECRET = "" ]
+        else
+                echo smartnodeblsprivkey=$BLS_SECRET >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        fi
+        echo -e "${YG}Success.${CN}"
 }
 
 function install_zip() {
@@ -310,7 +315,7 @@ function install_zip() {
 }
 
 function add_cron() {
-        if [ AC == 1 ]
+        if [ $AC == 1 ]
                 then
                 echo -n "     Adding $COIN_NAME to crontab"
                 dots
@@ -334,5 +339,6 @@ node_settings
 update_config
 start_daemon
 add_to_cron
+add_cron
 
 4204life
