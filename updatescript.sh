@@ -164,7 +164,9 @@ function download_node() {
                 echo -e "${YG}Success.${CN}"
 
         else
-                echo "     Skipping $COIN_URL_POWER"
+                echo -n "     Skipping $COIN_URL_POWER"
+                dots
+                echo -e "${YELLOW}Skipped.${CN}"
         fi
 
         if [ $BS == 1 ]
@@ -192,7 +194,9 @@ function download_node() {
                 echo -e "${YG}Success.${CN}"
 
         else
-                echo "     Skipping $COIN_URL_BOOT"
+                echo -n "     Skipping $COIN_URL_BOOT"
+                dots
+                echo -e "${YELLOW}Skipped.${CN}"
         fi
 
 }
@@ -290,24 +294,32 @@ function node_settings () {
 }
 
 function update_config () {
-        echo -n "     Updating $COIN_NAME config file"
-        dots
-        echo addnode=24.51.177.113:15420 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        echo addnode=65.20.114.24:15420 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        echo rpcallowip=127.0.0.1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        echo listen=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        echo server=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        echo daemon=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        echo port=$COIN_PORT >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        if ! [ -z $NODE_IP ]
-        then
-                echo bind=$NODE_IP >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+        if [ $INS_TYPE == update ]
+        then 
+                echo -n "     Skipping updating $COIN_NAME config as daemon upgrade only"
+                dots
+                echo -e "${YELLOW}Skipped.${CN}"
+        else
+                node_settings
+                echo -n "     Updating $COIN_NAME config file"
+                dots
+                echo addnode=24.51.177.113:15420 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                echo addnode=65.20.114.24:15420 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                echo rpcallowip=127.0.0.1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                echo listen=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                echo server=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                echo daemon=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                echo port=$COIN_PORT >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                if ! [ -z $NODE_IP ]
+                then
+                        echo bind=$NODE_IP >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                fi
+                if ! [ -z $BLS_SECRET ]
+                then
+                        echo smartnodeblsprivkey=$BLS_SECRET >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+                fi
+                echo -e "${YG}Success.${CN}"
         fi
-        if ! [ -z $BLS_SECRET ]
-        then
-                echo smartnodeblsprivkey=$BLS_SECRET >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        fi
-        echo -e "${YG}Success.${CN}"
 }
 
 function install_zip() {
@@ -335,7 +347,6 @@ bootstrap
 detect_os
 uninstall_old
 download_node
-node_settings
 update_config
 start_daemon
 add_to_cron
