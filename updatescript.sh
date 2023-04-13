@@ -299,11 +299,11 @@ function update_config () {
         echo server=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
         echo daemon=1 >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
         echo port=$COIN_PORT >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
-        if [ -z $NODE_IP ]
+        if ! [ -z $NODE_IP ]
         then
                 echo bind=$NODE_IP >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
         fi
-        if [ -z $BLS_SECRET ]
+        if ! [ -z $BLS_SECRET ]
         then
                 echo smartnodeblsprivkey=$BLS_SECRET >> ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
         fi
