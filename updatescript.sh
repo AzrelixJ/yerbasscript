@@ -1,6 +1,8 @@
 
 osType="$(uname -m)"
 COIN_DAEMON='yerbasd'
+COIN_FOLDER='yerbas-build'
+COIN_CONF_FOLDER='.yerbascore'
 COIN_NAME='YERBAS'
 COIN_CLI='yerbas-cli'
 COIN_URL='https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.2.6/'
@@ -9,7 +11,10 @@ COIN_URL_UBUNTU='yerbas-ubuntu20-v3.1.2.6.tar.gz'
 COIN_URL_POWER='powcache.dat'
 COIN_URL_BOOT='bootstrap.zip'
 COIN_VERSION_NAME='v3.1.2.6 -- Salata Furca Deux'
+COIN_CONF_FILE='yerbas.conf'
+COIN_PORT='15420'
 NODE_IP=''
+BLS_SECRET=''
 INS_TYPE=''
 File=".err.log"
 
@@ -44,36 +49,38 @@ function yerbas_title() {
 
         echo ""
         echo ""
-        echo "$COIN_NAME install script .... created and maintained by Azrelix"
+        echo "     $COIN_NAME install script .... created and maintained by Azrelix"
         echo ""
-        echo ""
+        rm .err.log &>> ~/.err.log
+        touch ~/.err.log
 
 }
 
 function dots(){
-        read -t 0.5 -p "."
-        read -t 0.5 -p "."
-        read -t 0.5 -p "."
-        read -t 0.1 -p ". "
+        sleep 0.5
+        read -t 0.25 -p " ."
+        read -t 0.25 -p "."
+        read -t 0.25 -p "."
+        read -t 0.25 -p ". "
 }
 
 
 function install_type(){
-        echo -e "${YELLOW}Select option"
-        echo "  1) Install new $COIN_NAME node"
-        echo -e "  2) Update existing $COIN_NAME node${CN}"
-        read n
+        echo -e "     ${CYAN}Select option"
+        echo "       1) Install new $COIN_NAME node"
+        echo -e "       2) Update existing $COIN_NAME node${CN}"
+        read -p "     " n
         case $n in
         1) INS_TYPE='new';;
         2) INS_TYPE='update';;
-        *) echo -e "${RED}invalid option selected.. :( try again${CN}"  ;install_type;
+        *) echo -e "     ${RED}invalid option selected.. :( try again${CN}"  ;install_type;
         esac
         echo " "
 }
 
 
-function therest() {
-        echo "Detecting system "
+function detect_os() {
+        echo -n "     Detecting system"
         dots
         if [ $osType == "x86_64" ]
                 then
@@ -92,36 +99,35 @@ function therest() {
 function uninstall_old() {
         if [ $INS_TYPE == "update" ]
                 then
-                echo "Stopping Yerbas Damon "
+                echo -n "     Stopping $COIN_NAME Daemon"
                 dots
-                cd ~/yerbas-build &> ~/.err.log
+                cd ~/$COIN_FOLDER &>> ~/.err.log
+                cd ~
                 if ! grep -q "No such file or directory" "$File"; then
-                        ./$COIN_CLI stop &> ~/.err.log
+                        cd ~/$COIN_FOLDER
+                        ./$COIN_CLI stop &>> ~/.err.log
                         cd ~
                         if ! grep -q "error:" "$File"; then
                                 echo -e "${YG}Success.${CN}"
                         else
                                 echo -e "${RED}Failed.  Daemon not running, attempting to continue.${CN}"
                         fi
-                        echo " "
-                        echo "Removing YerbasBuild folder "
+                        echo -n "     Removing $COIN_FOLDER folder "
                         dots
-                        rm -r yerbas-build &> ~/.err.log
+                        rm -r $COIN_FOLDER &>> ~/.err.log
                         if ! grep -q "cannot remove 'yerbas-build'" "$File"; then
                                 echo -e "${YG}Success.${CN}"
                         else
-                                echo -e "${RED}Failed. Unable to remove yerbas-build folder, either wrong location or yerbas not installed, attempting to continue.${CN}"
+                                echo -e "${RED}Failed. Unable to remove $COIN_FOLDER folder, either wrong location or $COIN_NAME not installed, attempting to continue.${CN}"
                         fi
                 else
-                        echo -e "${RED}yerbas-build directory not found, either wrong location or yerbas not installed, attempting to continue.${CN}"
+                        echo -e "${RED}$COIN_FOLDER directory not found, either wrong location or yerbas not installed, attempting to continue.${CN}"
                 fi
-                
-                echo " "
         fi
 }
 
 function download_node() {
-        echo "Fetching $COIN_NAME $COIN_VERSION_NAME"
+        echo -n "     Fetching $COIN_NAME $COIN_VERSION_NAME"
         dots
 
         if [ $osType == "x86_64" ]
@@ -132,8 +138,7 @@ function download_node() {
                 wget -q $COIN_URL$COIN_URL_ARM
         fi
         echo -e "${YG}Success.${CN}"
-        echo " "
-        echo "Extracting $COIN_NAME $COIN_VERSION_NAME"
+        echo -n "     Extracting $COIN_NAME $COIN_VERSION_NAME"
         dots
         if [ $osType == "x86_64" ]
                 then
@@ -145,58 +150,165 @@ function download_node() {
                 rm $COIN_URL_ARM
         fi
         echo -e "${YG}Success.${CN}"
-        echo " "
-
+        echo -n "     Cleaing up"
+        dots
+        echo -e "${YG}Success.${CN}"
         if [ $PC == 1 ]
                 then
                 cd ~
-                mkdir .yerbascore
-                cd .yerbascore
-                echo "Fetching $COIN_NAME $COIN_URL_POWER"
+                mkdir $COIN_CONF_FOLDER &>> ~/.err.log
+                cd $COIN_CONF_FOLDER
+                echo -n "     Fetching $COIN_NAME $COIN_URL_POWER"
                 dots
-                wget $COIN_URL$COIN_URL_POWER
+                wget -q $COIN_URL$COIN_URL_POWER
+                echo -e "${YG}Success.${CN}"
 
         else
-                echo "Skipping $COIN_URL_POWER"
+                echo "     Skipping $COIN_URL_POWER"
+        fi
+
+        if [ $BS == 1 ]
+                then
+                cd ~
+                mkdir $COIN_CONF_FOLDER &>> ~/.err.log
+                cd $COIN_CONF_FOLDER
+                rm -r blocks &>> ~/.err.log
+                rm -r chainstate &>> ~/.err.log
+                rm -r evodb &>> ~/.err.log
+                rm -r llmq &>> ~/.err.log
+                echo -n "     Fetching $COIN_NAME $COIN_URL_BOOT"
+                dots
+                wget -q $COIN_URL$COIN_URL_BOOT
+                echo -e "${YG}Success.${CN}"
+                echo -n "     Unzipping $COIN_NAME $COIN_URL_BOOT"
+                dots
+                unzip -q $COIN_URL_BOOT
+                rm $COIN_URL_BOOT
+                echo -e "${YG}Success.${CN}"
+                echo -n "     Moving $COIN_NAME bootstrap files to $COIN_CONF_FOLDER folder"
+                dots
+                mv bootstrap/* .
+                rm -r bootstrap
+                echo -e "${YG}Success.${CN}"
+
+        else
+                echo "     Skipping $COIN_URL_BOOT"
         fi
 
 }
 
 function power_cache() {
-        echo -e "${YELLOW}Download Power Cache?"
-        echo "  1) Yes"
-        echo -e "  2) No${CN}"
-        read n
+        echo -e "     ${CYAN}Download Power Cache?"
+        echo "       1) Yes"
+        echo -e "       2) No${CN}"
+        read -p "     " n
         case $n in
         1) PC=1;;
         2) PC=2;;
-        *) echo -e "${RED}invalid option selected.. :( try again${CN}"  ;power_cache;
+        *) echo -e "     ${RED}invalid option selected.. :( try again${CN}"  ;power_cache;
         esac
         echo " "
 }
 
+function tx_reindex() {
+        echo " "
+        echo -e "     ${CYAN}Is txreindex required on Daemon start?"
+        echo "       1) Yes"
+        echo -e "       2) No${CN}"
+        read -p "     " n
+        case $n in
+        1) TX=1;;
+        2) TX=2;;
+        *) echo -e "     ${RED}invalid option selected.. :( try again${CN}"  ;tx_reindex;
+        esac
+        echo " "
+}
 
+function add_to_cron() {
+        echo " "
+        echo -e "     ${CYAN}Add $COIN_NAME to Crontab? (this will start $COIN_NAME daemon on Boot)"
+        echo "       1) Yes"
+        echo -e "       2) No${CN}"
+        read -p "     " n
+        case $n in
+        1) AC=1;;
+        2) AC=2;;
+        *) echo -e "     ${RED}invalid option selected.. :( try again${CN}"  ;add_to_cron;
+        esac
+        echo " "
+}
 
-function other() {
-        sudo apt-get install -qq unzip
-        cd ~/.yerbascore
-        wget -q $COIN_URL$COIN_URL_POWER
-        wget -q $COIN_URL$COIN_URL_BOOT
-        unzip $COIN_URL_BOOT
-        mv bootstrap/*
-        rm -r bootstrap
-        rm $COIN_URL_BOOT
-        }
-        function restart_daemon() {
-        echo "Restarting Yerbas Daemon "
+function bootstrap() {
+        echo -e "     ${CYAN}Download Bootstrap?"
+        echo "       1) Yes"
+        echo -e "       2) No${CN}"
+        read -p "     " n
+        case $n in
+        1) BS=1;;
+        2) BS=2;;
+        *) echo -e "     ${RED}invalid option selected.. :( try again${CN}"  ;bootstrap;
+        esac
+        echo " "
+}
+
+function 4204life() {
+        echo " "
+        echo " "
+        echo " "
+        echo -e "     ${YG}INSTALLATION COMPLETE${CN}"
+        echo " "
+}
+
+function start_daemon () {
+        tx_reindex
+        echo -n "     Starting $COIN_NAME daemon "
         dots
-        cd ~/yerbas-build
-        ./COIN_DAEMON
+        cd ~/$COIN_FOLDER
+        #./$COIN_DAEMON
+        #add error catching if daemon doesnt start
         cd ~
         echo -e "${YG}Success.${CN}"
-        dots
-        echo "${YG}UPDATE COMPLETE ... 420 4 LIFE${CN}"
+
+
+}
+
+function node_settings () {
         echo " "
+        read -p "     Enter node IP: " NODE_IP
+        read -p "     Enter BLS secret Key: " BLS_SECRET
+        echo " "
+}
+
+function update_config () {
+        echo -n "     Updating $COIN_NAME config file"
+        dots
+        cat << EOF > ~/$COIN_CONF_FOLDER/$COIN_CONF_FILE
+addnode=24.51.177.113:15420
+addnode=65.20.114.24:15420
+rpcallowip=127.0.0.1
+listen=1
+server=1
+daemon=1
+port=$COIN_PORT
+bind=$NODE_IP
+smartnodeblsprivkey=$BLS_SECRET
+EOF
+echo -e "${YG}Success.${CN}"
+}
+
+function install_zip() {
+        sudo apt-get install -qq unzip
+}
+
+function add_cron() {
+        if [ AC == 1 ]
+                then
+                echo -n "     Adding $COIN_NAME crontab"
+                dots
+                cat <(crontab -l) <(echo "@reboot sleep 20 && ~/yerbas-build/yerbasd") | crontab -
+                echo -e "${YG}Success.${CN}"
+        fi
+
 }
 
 #MAIN
@@ -205,10 +317,14 @@ clear
 
 yerbas_title
 install_type
-uninstall_old
 power_cache
+bootstrap
+detect_os
+uninstall_old
 download_node
+node_settings
+update_config
+start_daemon
+add_to_cron
 
-
-
-#therest
+4204life
