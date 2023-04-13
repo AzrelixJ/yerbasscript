@@ -261,15 +261,24 @@ function 4204life() {
 
 function start_daemon () {
         tx_reindex
-        echo -n "     Starting $COIN_NAME daemon "
-        dots
-        cd ~/$COIN_FOLDER
-        #./$COIN_DAEMON
-        #add error catching if daemon doesnt start
-        cd ~
-        echo -e "${YG}Success.${CN}"
-
-
+        if [ TX == 1 ]
+        then
+                echo -n "     Starting $COIN_NAME daemon with txindex enabled"
+                dots
+                cd ~/$COIN_FOLDER
+                #./$COIN_DAEMON -txindex
+                #add error catching if daemon doesnt start
+                cd ~
+                echo -e "${YG}Success.${CN}"
+        else 
+                        echo -n "     Starting $COIN_NAME daemon "
+                dots
+                cd ~/$COIN_FOLDER
+                #./$COIN_DAEMON
+                #add error catching if daemon doesnt start
+                cd ~
+                echo -e "${YG}Success.${CN}"
+        fi
 }
 
 function node_settings () {
@@ -303,12 +312,11 @@ function install_zip() {
 function add_cron() {
         if [ AC == 1 ]
                 then
-                echo -n "     Adding $COIN_NAME crontab"
+                echo -n "     Adding $COIN_NAME to crontab"
                 dots
                 cat <(crontab -l) <(echo "@reboot sleep 20 && ~/yerbas-build/yerbasd") | crontab -
                 echo -e "${YG}Success.${CN}"
         fi
-
 }
 
 #MAIN
