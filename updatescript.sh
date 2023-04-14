@@ -270,7 +270,7 @@ function start_daemon () {
                 echo -n "     Starting $COIN_NAME daemon with -reindex enabled"
                 dots
                 cd ~/$COIN_FOLDER
-                #./$COIN_DAEMON -reindex
+                #./$COIN_DAEMON -reindex &>> ~/.err.log
                 #add error catching if daemon doesnt start
                 cd ~
                 echo -e "${YG}Success.${CN}"
@@ -278,7 +278,7 @@ function start_daemon () {
                         echo -n "     Starting $COIN_NAME daemon "
                 dots
                 cd ~/$COIN_FOLDER
-                ./$COIN_DAEMON
+                ./$COIN_DAEMON &>> ~/.err.log
                 #add error catching if daemon doesnt start
                 cd ~
                 echo -e "${YG}Success.${CN}"
