@@ -267,10 +267,10 @@ function start_daemon () {
         tx_reindex
         if [ $TX == 1 ]
         then
-                echo -n "     Starting $COIN_NAME daemon with txindex enabled"
+                echo -n "     Starting $COIN_NAME daemon with -reindex enabled"
                 dots
                 cd ~/$COIN_FOLDER
-                #./$COIN_DAEMON -txindex
+                #./$COIN_DAEMON -reindex
                 #add error catching if daemon doesnt start
                 cd ~
                 echo -e "${YG}Success.${CN}"
@@ -278,7 +278,7 @@ function start_daemon () {
                         echo -n "     Starting $COIN_NAME daemon "
                 dots
                 cd ~/$COIN_FOLDER
-                #./$COIN_DAEMON
+                ./$COIN_DAEMON
                 #add error catching if daemon doesnt start
                 cd ~
                 echo -e "${YG}Success.${CN}"
