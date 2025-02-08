@@ -2,9 +2,9 @@
 
 
 cd ~ 
-wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v2.1.1.4/yerbas-arm64-2.1.1.4.tar.gz
-tar -xf yerbas-arm64-2.1.1.4.tar.gz
-rm yerbas-arm64-2.1.1.4.tar.gz
+wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.4.20/yerbas-arm64-3.1.4.20.tar.gz
+tar -xf yerbas-arm64-3.1.4.20.tar.gz
+rm yerbas-arm64-3.1.4.20.tar.gz
 mkdir ~/.yerbascore 
 touch ~/.yerbascore/yerbas.conf
 echo daemon=1 >> ~/.yerbascore/yerbas.conf 
@@ -20,5 +20,5 @@ echo externalip= >> ~/.yerbascore/yerbas.conf
 echo smartnodeblsprivkey= >> ~/.yerbascore/yerbas.conf 
 
 cd .yerbascore
-wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v2.1.1.4/powcache.dat
+wget https://github.com/The-Yerbas-Endeavor/yerbas/releases/download/v3.1.4.20/powcache.dat
 nano yerbas.conf 
